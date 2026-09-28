@@ -1,6 +1,6 @@
 # VuaDacSanAppMobile
 
-Dự án **VuaDacSanAppMobile** là ứng dụng di động Android Native viết bằng **Java**, sử dụng hệ cơ sở dữ liệu **SQLite** cục bộ. Ứng dụng cung cấp giải pháp kép: giao diện mua hàng cho khách hàng và bộ công cụ quản lý vận hành (sản phẩm, nhân sự, lịch làm việc, kho - kế toán, khuyến mãi và chăm sóc khách hàng) cho quản trị viên.
+Ứng dụng di động Android Native viết bằng **Java** và cơ sở dữ liệu **SQLite**, phục vụ quản lý và bán lẻ đặc sản.
 
 ---
 
@@ -11,7 +11,7 @@ VuaDacSanAppMobile/
 ├── app/
 │   ├── src/main/
 │   │   ├── java/
-│   │   │   ├── com/example/baicuoiki/    # Phân hệ mua sắm, giỏ hàng, đặt hàng & quản lý nghiệp vụ
+│   │   │   ├── com/example/baicuoiki/    # Phân hệ mua sắm, giỏ hàng, đặt hàng & nghiệp vụ
 │   │   │   ├── com/example/dangnhap/     # Phân hệ xác thực, phân quyền & quản lý nhân sự
 │   │   │   ├── com/example/kho_ketoan/   # Phân hệ quản lý kho, bảng lương & thống kê
 │   │   │   ├── com/example/qlkhuyenmai/  # Phân hệ khuyến mãi & chăm sóc khách hàng (CSKH)
@@ -27,94 +27,53 @@ VuaDacSanAppMobile/
 
 ---
 
-## 📱 Các Chức Năng Hiện Có Trong Ứng Dụng
-
-Ứng dụng tự động điều hướng và hiển thị giao diện theo **Vai trò người dùng** sau khi đăng nhập:
-
-### 1. Phân Hệ Xác Thực (`com.example.dangnhap`)
-- **Đăng nhập (`LoginActivity`)**: Kiểm tra thông tin trong bảng `TAI_KHOAN`, lưu trạng thái phiên và vai trò (`admin` hoặc `customer`) qua `SharedPreferences`.
-- **Đăng ký (`RegisterActivity`)**: Cho phép người dùng đăng ký tài khoản khách hàng mới, lưu đồng thời vào bảng `TAI_KHOAN` và `KHACH_HANG`.
-
-### 2. Giao Diện Dành Cho Khách Hàng (`customer`)
-- **Trang chủ (`MainActivity`)**: Hiển thị danh sách sản phẩm đặc sản dưới dạng lưới (`GridView`), có ô tìm kiếm sản phẩm theo tên.
-- **Chi tiết sản phẩm (`ProductDetailActivity`)**: Xem thông tin chi tiết, giá bán, mô tả, chọn số lượng và thêm vào giỏ hàng.
-- **Giỏ hàng (`CartActivity`)**: Quản lý sản phẩm đang chọn, tăng/giảm số lượng hoặc xóa món.
-- **Thanh toán (`CheckoutActivity`)**: Nhập thông tin nhận hàng, chọn phương thức thanh toán, áp dụng mã khuyến mãi và tạo hóa đơn lưu vào CSDL.
-- **Đơn hàng (`OrderActivity`, `OrderDetailActivity`)**: Xem danh sách hóa đơn đã đặt và chi tiết từng đơn hàng.
-- **Hỗ trợ khách hàng (`CSKHActivity`)**: Gửi yêu cầu trợ giúp/khiếu nại về đơn hàng và sản phẩm.
-
-### 3. Giao Diện Quản Trị Viên (`admin`)
-Khi đăng nhập bằng tài khoản Admin, trang chủ `MainActivity` mở khóa toàn bộ menu quản trị:
-- **Quản lý Sản phẩm (`ProductActivity`)**: Xem danh sách, thêm, chỉnh sửa thông tin và xóa sản phẩm đặc sản.
-- **Quản lý Nhà cung cấp (`SupplierActivity`)**: Thêm, sửa, xóa thông tin các nhà cung cấp đặc sản.
-- **Lịch làm việc (`LichLamActivity`)**: 
-  - Phân công ca trực cho nhân viên theo ngày.
-  - Hỗ trợ thêm lịch làm việc hàng loạt.
-  - **Xuất lịch làm việc ra file Excel (`.xlsx`)** vào thư mục `Downloads` thông qua `ExcelHelper` (Apache POI).
-- **Quản lý Nhân sự (`NhanVienActivity`)**: Danh sách nhân viên, thông tin CCCD, ngày sinh, vai trò và tài khoản liên kết.
-- **Quản lý Khách hàng (`CustomerActivity`)**: Xem danh sách, thêm, cập nhật thông tin khách hàng.
-- **Phân hệ Kho & Kế toán (`KhoKeToanMainActivity`)**:
-  - **Phiếu kho (`PhieuKhoActivity`)**: Tạo và quản lý phiếu nhập kho/xuất kho kèm chi tiết số lượng, đơn giá từng sản phẩm.
-  - **Bảng lương (`BangLuongActivity`)**: Quản lý lương nhân viên theo tháng (Lương cơ bản + Phụ cấp - Khấu trừ = Tổng lương).
-  - **Thống kê (`ThongKeActivity`)**: Thống kê tổng tiền nhập kho, xuất kho và tổng chi phí lương theo từng tháng.
-- **Quản lý Khuyến mãi (`KhuyenMaiMainActivity`)**: Tạo và quản lý mã giảm giá, giá trị giảm, đơn hàng tối thiểu và ngày hết hạn.
-- **Chăm sóc Khách hàng (`CSKHActivity`)**: Xem danh sách khiếu nại, phản hồi nội dung và cập nhật trạng thái yêu cầu hỗ trợ.
-
----
-
-## 🗄 Cơ Sở Dữ Liệu SQLite (`QuanLyHeThong.db`)
-
-Dữ liệu được quản lý tập trung qua file `DatabaseHelper.java` với **13 bảng quan hệ**:
-
-| Tên Bảng | Mô Tả Dữ Liệu |
-| :--- | :--- |
-| `TAI_KHOAN` | Lưu `tenDangnhap`, `matKhau`, `trangThai`, `soLanDangNhapSai`, `maOTP`, `thoiGianHetHanOTP` |
-| `NHAN_VIEN` | Thông tin nhân viên, họ tên, SĐT, email, CCCD, ngày sinh, vai trò |
-| `SAN_PHAM` | Tên đặc sản, hình ảnh, mô tả, đơn vị tính, đơn giá, tồn kho, HSD, mã NCC |
-| `NHA_CUNG_CAP` | Thông tin đối tác cung cấp (Tên, SĐT, email, địa chỉ) |
-| `LICH_LAM_VIEC` | Ca làm việc, ngày làm, nhiệm vụ được phân công cho nhân viên |
-| `PHIEU_KHO` | Phiếu nhập/xuất, ngày lập, tổng tiền, nhân viên lập, mã NCC, trạng thái |
-| `CHI_TIET_PHIEU_KHO` | Chi tiết từng sản phẩm, số lượng và đơn giá trong phiếu kho |
-| `BANG_LUONG` | Bảng tính lương theo tháng (Lương CB, phụ cấp, khấu trừ, tổng lương) |
-| `KHACH_HANG` | Hồ sơ khách hàng, SĐT, email, địa chỉ, tài khoản liên kết |
-| `HOA_DON` | Hóa đơn bán hàng, ngày tạo, phương thức thanh toán, tổng tiền, trạng thái |
-| `CHI_TIET_HOA_DON` | Danh sách sản phẩm, số lượng và giá bán trong mỗi hóa đơn |
-| `KHUYEN_MAI` | Mã voucher, loại mã, giá trị giảm, đơn tối thiểu, ngày kết thúc |
-| `YEU_CAU_HO_TRO` | Phiếu phản hồi/khiếu nại của khách hàng và nội dung trả lời từ CSKH |
-
-### Tài Khoản Quản Trị Mặc Định (Seed Data)
-Cơ sở dữ liệu tự động tạo sẵn 1 tài khoản Admin khi cài đặt lần đầu:
-- **Tên đăng nhập**: `admin`
-- **Mật khẩu**: `123`
-- **Vai trò**: `admin` (Mã nhân viên: `NV01`)
-
----
-
-## 🛠 Thư Viện & Công Nghệ Thực Tế
-
-| Thành phần | Phiên bản / Chi tiết | Mục đích sử dụng |
-| :--- | :--- | :--- |
-| **Java** | Version 11 | Ngôn ngữ phát triển toàn bộ mã nguồn |
-| **Android SDK** | Min SDK 26, Target SDK 35, Compile SDK 36 | Nền tảng phát triển ứng dụng di động Android Native |
-| **SQLite (SQLiteOpenHelper)** | Database Version 3 | CSDL quan hệ lưu trữ dữ liệu offline trực tiếp trên thiết bị |
-| **Material Components** | 1.12.0 | Giao diện chuẩn (Buttons, Cards, Dialogs, Bottom Navigation...) |
-| **Glide** | 4.16.0 | Tải và hiển thị hình ảnh sản phẩm mượt mà |
-| **Apache POI** | 5.2.3 (poi, poi-ooxml) | Hỗ trợ xuất dữ liệu (Lịch làm việc) ra file định dạng Excel (`.xlsx`) |
-
----
-
 ## 🚀 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng
 
-1. Mở thư mục dự án bằng **Android Studio**.
-2. Đợi Android Studio hoàn tất quá trình **Sync Gradle** tải các thư viện.
-3. Kết nối máy ảo Android (API 26+) hoặc máy thật qua cổng USB (bật *USB Debugging*).
-4. Nhấn nút **Run** (biểu tượng ▶️) để biên dịch và cài đặt ứng dụng lên máy.
+### 1. Yêu Cầu Môi Trường
+* **IDE**: Android Studio (Jellyfish, Koala hoặc mới hơn).
+* **JDK**: Java Development Kit 11 trở lên.
+* **Android SDK**: Min SDK 26 (Android 8.0) | Target SDK 35 | Compile SDK 36.
+* **Thiết bị chạy**: Máy ảo Android (AVD) hoặc điện thoại thật bật *USB Debugging*.
 
-Hoặc build file APK Debug trực tiếp từ dòng lệnh:
-```powershell
-.\gradlew.bat assembleDebug
+### 2. Cài Đặt & Chạy Bằng Android Studio
+1. **Clone mã nguồn về máy**:
+   ```bash
+   git clone https://github.com/mihtan05/VuaDacSanAppMobile.git
+   ```
+2. **Mở dự án**:
+   - Mở Android Studio, chọn **Open** và dẫn tới thư mục `VuaDacSanAppMobile`.
+3. **Đồng bộ dependencies**:
+   - Chờ Android Studio tự động chạy **Sync Project with Gradle Files** để tải các thư viện cần thiết.
+4. **Khởi chạy**:
+   - Chọn cấu hình chạy là `app`.
+   - Chọn máy ảo hoặc thiết bị thật đã kết nối.
+   - Nhấn nút **Run** (biểu tượng ▶️) hoặc phím tắt `Shift + F10` để cài đặt và chạy ứng dụng.
+
+### 3. Build File APK Trực Tiếp Bằng Lệnh (Command Line)
+Nếu muốn xuất file cài đặt APK Debug mà không cần mở giao diện Android Studio:
+* **Trên Windows:**
+  ```powershell
+  .\gradlew.bat assembleDebug
+  ```
+* **Trên macOS / Linux:**
+  ```bash
+  ./gradlew assembleDebug
+  ```
+File APK sau khi build nằm tại đường dẫn:
+```text
+app/build/outputs/apk/debug/app-debug.apk
 ```
-File APK sinh ra tại thư mục: `app/build/outputs/apk/debug/app-debug.apk`.
+
+---
+
+## 🔑 Tài Khoản Đăng Nhập Mặc Định
+
+Cơ sở dữ liệu tự động tạo sẵn tài khoản quản trị khi ứng dụng khởi chạy lần đầu:
+* **Tên đăng nhập**: `admin`
+* **Mật khẩu**: `123`
+* **Vai trò**: Quản trị viên (`admin`)
+
+*(Người dùng có thể đăng ký tài khoản mới trực tiếp trên màn hình đăng ký của ứng dụng).*
 
 ---
 
