@@ -1,158 +1,145 @@
 # VuaDacSanAppMobile
 
-Dự án **VuaDacSanAppMobile** là ứng dụng di động Android Native được xây dựng phục vụ việc kinh doanh, bán lẻ đặc sản vùng miền và quản lý vận hành doanh nghiệp toàn diện. Hệ thống tích hợp đầy đủ các phân hệ từ bán hàng cho khách hàng, phân quyền nhân sự, quản lý kho & kế toán, đến chăm sóc khách hàng và khuyến mãi trên nền tảng **SQLite Database**.
+Dự án **VuaDacSanAppMobile** là ứng dụng di động Android Native viết bằng **Java**, sử dụng hệ cơ sở dữ liệu **SQLite** cục bộ. Ứng dụng cung cấp giải pháp kép: giao diện mua hàng cho khách hàng và bộ công cụ quản lý vận hành (sản phẩm, nhân sự, lịch làm việc, kho - kế toán, khuyến mãi và chăm sóc khách hàng) cho quản trị viên.
 
 ---
 
-## 🏗 Cấu Trúc Dự Án
+## 🏗 Cấu Trúc Thư Mục Dự Án
 
 ```text
 VuaDacSanAppMobile/
-├── .github/
-│   └── workflows/                # CI/CD Workflows (nếu có cấu hình)
 ├── app/
 │   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   ├── com/example/baicuoiki/        # Phân hệ Bán hàng & Nghiệp vụ cốt lõi
-│   │   │   │   │   ├── activity/                 # Màn hình Giỏ hàng, Đặt hàng, Nhà cung cấp, Lịch làm...
-│   │   │   │   │   ├── adapter/                  # Adapter cho RecyclerView (Sản phẩm, Giỏ hàng...)
-│   │   │   │   │   ├── model/                    # Data Models (Product, Order, Customer, Supplier...)
-│   │   │   │   │   └── MainActivity.java         # Màn hình điều hướng chính
-│   │   │   │   ├── com/example/dangnhap/         # Phân hệ Xác thực & Quản lý Nhân sự
-│   │   │   │   │   ├── activities/               # LoginActivity, AdminActivity, NhanVienActivity
-│   │   │   │   │   ├── adapters/                 # NhanVienAdapter
-│   │   │   │   │   ├── dao/                      # NhanVienDAO, TaiKhoanDAO
-│   │   │   │   │   └── models/                   # NhanVien, TaiKhoan
-│   │   │   │   ├── com/example/kho_ketoan/       # Phân hệ Quản lý Kho & Kế toán
-│   │   │   │   │   ├── activities/               # Quản lý Phiếu kho, Bảng lương, Thống kê doanh thu
-│   │   │   │   │   ├── adapters/                 # Adapter phiếu kho, chi tiết phiếu, bảng lương
-│   │   │   │   │   └── models/                   # PhieuKho, ChiTietPhieuKho, BangLuong
-│   │   │   │   ├── com/example/qlkhuyenmai/      # Phân hệ Khuyến mãi & Chăm sóc khách hàng
-│   │   │   │   │   ├── cskh/                     # Tiếp nhận & xử lý yêu cầu khiếu nại (CSKHActivity)
-│   │   │   │   │   ├── KhuyenMaiMainActivity.java# Quản lý mã giảm giá, voucher khuyến mãi
-│   │   │   │   │   └── KhuyenMaiDAO.java         # Xử lý dữ liệu khuyến mãi
-│   │   │   │   └── database/
-│   │   │   │       └── DatabaseHelper.java       # Quản trị SQLite (Tạo 13 bảng, quan hệ & seed data)
-│   │   │   ├── res/                              # Giao diện XML, icon vector, màu sắc, strings
-│   │   │   └── AndroidManifest.xml               # Khai báo quyền, Activity và ứng dụng
-│   │   └── test/                                 # Unit Test (JUnit 4)
-│   └── build.gradle.kts                          # Cấu hình build & dependencies cấp module app
+│   │   └── main/
+│   │       ├── java/
+│   │       │   ├── com/example/baicuoiki/        # Nghiệp vụ mua sắm & tiện ích
+│   │       │   │   ├── activity/                 # CartActivity, CheckoutActivity, CustomerActivity, LichLamActivity, OrderActivity, OrderDetailActivity, ProductActivity, ProductDetailActivity, SupplierActivity
+│   │       │   │   ├── adapter/                  # CartAdapter, CustomerAdapter, LichLamViecAdapter, OrderAdapter, OrderDetailAdapter, ProductAdapter, SupplierAdapter
+│   │       │   │   ├── model/                    # CartItem, CartManager, Customer, LichLamViec, Order, OrderDetail, Product, Supplier
+│   │       │   │   ├── ExcelHelper.java          # Tiện ích xuất dữ liệu ra file Excel (.xlsx)
+│   │       │   │   ├── MainActivity.java         # Màn hình chính phân quyền hiển thị (Admin / Khách hàng)
+│   │       │   │   └── RegisterActivity.java     # Đăng ký tài khoản khách hàng mới
+│   │       │   ├── com/example/dangnhap/         # Xác thực & Quản lý nhân sự
+│   │       │   │   ├── activities/               # LoginActivity, AdminActivity, NhanVienActivity
+│   │       │   │   ├── adapters/                 # NhanVienAdapter
+│   │       │   │   ├── dao/                      # NhanVienDAO, TaiKhoanDAO
+│   │       │   │   └── models/                   # NhanVien, TaiKhoan
+│   │       │   ├── com/example/kho_ketoan/       # Quản lý kho, tính lương & thống kê
+│   │       │   │   ├── activities/               # KhoKeToanMainActivity, PhieuKhoActivity, AddEditPhieuKhoActivity, ChiTietPhieuKhoActivity, BangLuongActivity, ThongKeActivity
+│   │       │   │   ├── adapters/                 # PhieuKhoAdapter, ChiTietPhieuKhoAdapter, BangLuongAdapter
+│   │       │   │   └── models/                   # PhieuKho, ChiTietPhieuKho, BangLuong
+│   │       │   ├── com/example/qlkhuyenmai/      # Khuyến mãi & Chăm sóc khách hàng
+│   │       │   │   ├── cskh/                     # CSKHActivity, YeuCauAdapter, YeuCauDAO, YeuCauHoTro
+│   │       │   │   ├── KhuyenMaiMainActivity.java# Quản lý voucher, mã giảm giá
+│   │       │   │   └── KhuyenMaiDAO.java         # Thao tác CSDL khuyến mãi
+│   │       │   └── database/
+│   │       │       └── DatabaseHelper.java       # SQLite helper khởi tạo & quản trị 13 bảng CSDL
+│   │       ├── res/                              # Layouts XML, Drawables, Values (Colors, Strings, Themes), Menus
+│   │       └── AndroidManifest.xml               # Khai báo các Activity và quyền (Internet, Storage)
+│   └── build.gradle.kts                          # Cấu hình SDK, dependencies của app
 ├── gradle/
-│   ├── libs.versions.toml                        # Quản lý phiên bản dependencies tập trung
+│   ├── libs.versions.toml                        # Khai báo phiên bản thư viện
 │   └── wrapper/                                  # Gradle Wrapper
-├── .gitignore                                    # Danh sách file và thư mục loại trừ
-├── build.gradle.kts                              # Cấu hình build cấp root project
+├── .gitignore                                    # File cấu hình bỏ qua Git (.idea, build, .gradle...)
+├── build.gradle.kts                              # Cấu hình root project
 ├── gradle.properties                             # Cấu hình JVM & AndroidX
-├── gradlew / gradlew.bat                         # Gradle CLI runner cho macOS/Linux và Windows
-├── settings.gradle.kts                           # Quản lý repositories và module con
-└── README.md                                     # Tài liệu hướng dẫn dự án
+├── gradlew / gradlew.bat                         # Gradle CLI Script cho macOS/Linux và Windows
+└── settings.gradle.kts                           # Khai báo settings & repositories
 ```
 
 ---
 
-## 📱 Các Phân Hệ & Tính Năng Nổi Bật
+## 📱 Các Chức Năng Hiện Có Trong Ứng Dụng
 
-| Phân Hệ | Chức Năng Chính | Chi Tiết Nghiệp Vụ |
+Ứng dụng tự động điều hướng và hiển thị giao diện theo **Vai trò người dùng** sau khi đăng nhập:
+
+### 1. Phân Hệ Xác Thực (`com.example.dangnhap`)
+- **Đăng nhập (`LoginActivity`)**: Kiểm tra thông tin trong bảng `TAI_KHOAN`, lưu trạng thái phiên và vai trò (`admin` hoặc `customer`) qua `SharedPreferences`.
+- **Đăng ký (`RegisterActivity`)**: Cho phép người dùng đăng ký tài khoản khách hàng mới, lưu đồng thời vào bảng `TAI_KHOAN` và `KHACH_HANG`.
+
+### 2. Giao Diện Dành Cho Khách Hàng (`customer`)
+- **Trang chủ (`MainActivity`)**: Hiển thị danh sách sản phẩm đặc sản dưới dạng lưới (`GridView`), có ô tìm kiếm sản phẩm theo tên.
+- **Chi tiết sản phẩm (`ProductDetailActivity`)**: Xem thông tin chi tiết, giá bán, mô tả, chọn số lượng và thêm vào giỏ hàng.
+- **Giỏ hàng (`CartActivity`)**: Quản lý sản phẩm đang chọn, tăng/giảm số lượng hoặc xóa món.
+- **Thanh toán (`CheckoutActivity`)**: Nhập thông tin nhận hàng, chọn phương thức thanh toán, áp dụng mã khuyến mãi và tạo hóa đơn lưu vào CSDL.
+- **Đơn hàng (`OrderActivity`, `OrderDetailActivity`)**: Xem danh sách hóa đơn đã đặt và chi tiết từng đơn hàng.
+- **Hỗ trợ khách hàng (`CSKHActivity`)**: Gửi yêu cầu trợ giúp/khiếu nại về đơn hàng và sản phẩm.
+
+### 3. Giao Diện Quản Trị Viên (`admin`)
+Khi đăng nhập bằng tài khoản Admin, trang chủ `MainActivity` mở khóa toàn bộ menu quản trị:
+- **Quản lý Sản phẩm (`ProductActivity`)**: Xem danh sách, thêm, chỉnh sửa thông tin và xóa sản phẩm đặc sản.
+- **Quản lý Nhà cung cấp (`SupplierActivity`)**: Thêm, sửa, xóa thông tin các nhà cung cấp đặc sản.
+- **Lịch làm việc (`LichLamActivity`)**: 
+  - Phân công ca trực cho nhân viên theo ngày.
+  - Hỗ trợ thêm lịch làm việc hàng loạt.
+  - **Xuất lịch làm việc ra file Excel (`.xlsx`)** vào thư mục `Downloads` thông qua `ExcelHelper` (Apache POI).
+- **Quản lý Nhân sự (`NhanVienActivity`)**: Danh sách nhân viên, thông tin CCCD, ngày sinh, vai trò và tài khoản liên kết.
+- **Quản lý Khách hàng (`CustomerActivity`)**: Xem danh sách, thêm, cập nhật thông tin khách hàng.
+- **Phân hệ Kho & Kế toán (`KhoKeToanMainActivity`)**:
+  - **Phiếu kho (`PhieuKhoActivity`)**: Tạo và quản lý phiếu nhập kho/xuất kho kèm chi tiết số lượng, đơn giá từng sản phẩm.
+  - **Bảng lương (`BangLuongActivity`)**: Quản lý lương nhân viên theo tháng (Lương cơ bản + Phụ cấp - Khấu trừ = Tổng lương).
+  - **Thống kê (`ThongKeActivity`)**: Thống kê tổng tiền nhập kho, xuất kho và tổng chi phí lương theo từng tháng.
+- **Quản lý Khuyến mãi (`KhuyenMaiMainActivity`)**: Tạo và quản lý mã giảm giá, giá trị giảm, đơn hàng tối thiểu và ngày hết hạn.
+- **Chăm sóc Khách hàng (`CSKHActivity`)**: Xem danh sách khiếu nại, phản hồi nội dung và cập nhật trạng thái yêu cầu hỗ trợ.
+
+---
+
+## 🗄 Cơ Sở Dữ Liệu SQLite (`QuanLyHeThong.db`)
+
+Dữ liệu được quản lý tập trung qua file `DatabaseHelper.java` với **13 bảng quan hệ**:
+
+| Tên Bảng | Mô Tả Dữ Liệu |
+| :--- | :--- |
+| `TAI_KHOAN` | Lưu `tenDangnhap`, `matKhau`, `trangThai`, `soLanDangNhapSai`, `maOTP`, `thoiGianHetHanOTP` |
+| `NHAN_VIEN` | Thông tin nhân viên, họ tên, SĐT, email, CCCD, ngày sinh, vai trò |
+| `SAN_PHAM` | Tên đặc sản, hình ảnh, mô tả, đơn vị tính, đơn giá, tồn kho, HSD, mã NCC |
+| `NHA_CUNG_CAP` | Thông tin đối tác cung cấp (Tên, SĐT, email, địa chỉ) |
+| `LICH_LAM_VIEC` | Ca làm việc, ngày làm, nhiệm vụ được phân công cho nhân viên |
+| `PHIEU_KHO` | Phiếu nhập/xuất, ngày lập, tổng tiền, nhân viên lập, mã NCC, trạng thái |
+| `CHI_TIET_PHIEU_KHO` | Chi tiết từng sản phẩm, số lượng và đơn giá trong phiếu kho |
+| `BANG_LUONG` | Bảng tính lương theo tháng (Lương CB, phụ cấp, khấu trừ, tổng lương) |
+| `KHACH_HANG` | Hồ sơ khách hàng, SĐT, email, địa chỉ, tài khoản liên kết |
+| `HOA_DON` | Hóa đơn bán hàng, ngày tạo, phương thức thanh toán, tổng tiền, trạng thái |
+| `CHI_TIET_HOA_DON` | Danh sách sản phẩm, số lượng và giá bán trong mỗi hóa đơn |
+| `KHUYEN_MAI` | Mã voucher, loại mã, giá trị giảm, đơn tối thiểu, ngày kết thúc |
+| `YEU_CAU_HO_TRO` | Phiếu phản hồi/khiếu nại của khách hàng và nội dung trả lời từ CSKH |
+
+### Tài Khoản Quản Trị Mặc Định (Seed Data)
+Cơ sở dữ liệu tự động tạo sẵn 1 tài khoản Admin khi cài đặt lần đầu:
+- **Tên đăng nhập**: `admin`
+- **Mật khẩu**: `123`
+- **Vai trò**: `admin` (Mã nhân viên: `NV01`)
+
+---
+
+## 🛠 Thư Viện & Công Nghệ Thực Tế
+
+| Thành phần | Phiên bản / Chi tiết | Mục đích sử dụng |
 | :--- | :--- | :--- |
-| **🛍️ Mua Sắm & Đặt Hàng** | Catalog Sản phẩm, Giỏ hàng, Đặt hàng | Xem chi tiết đặc sản, lọc danh mục, thêm/bớt số lượng giỏ hàng, áp mã khuyến mãi, lưu hóa đơn vào CSDL. |
-| **🔐 Xác Thực & Phân Quyền** | Đăng nhập, Bảo mật, Quản lý tài khoản | Phân quyền 2 vai trò rõ ràng (**Admin** và **Nhân viên**), quản lý OTP, kiểm soát số lần đăng nhập sai. |
-| **👥 Quản Lý Nhân Sự** | Hồ sơ nhân viên, Ca làm việc | Thêm/sửa/xóa nhân viên, gán tài khoản, xếp lịch làm việc theo ngày và theo ca, phân công nhiệm vụ. |
-| **📦 Quản Lý Kho** | Phiếu nhập kho, Phiếu xuất kho | Quản lý mã phiếu, nhà cung cấp, chi tiết sản phẩm nhập/xuất, tự động cập nhật số lượng tồn kho. |
-| **💰 Kế Toán & Lương** | Tính lương, Thống kê tài chính | Quản lý bảng lương theo tháng, tính tổng phụ cấp, khấu trừ, thống kê doanh thu - chi phí xuất/nhập kho. |
-| **🎁 Khuyến Mãi & CSKH** | Voucher, Tiếp nhận yêu cầu hỗ trợ | Thiết lập mã giảm giá theo đơn tối thiểu, tiếp nhận và phản hồi phiếu khiếu nại của khách hàng. |
+| **Java** | Version 11 | Ngôn ngữ phát triển toàn bộ mã nguồn |
+| **Android SDK** | Min SDK 26, Target SDK 35, Compile SDK 36 | Nền tảng phát triển ứng dụng di động Android Native |
+| **SQLite (SQLiteOpenHelper)** | Database Version 3 | CSDL quan hệ lưu trữ dữ liệu offline trực tiếp trên thiết bị |
+| **Material Components** | 1.12.0 | Giao diện chuẩn (Buttons, Cards, Dialogs, Bottom Navigation...) |
+| **Glide** | 4.16.0 | Tải và hiển thị hình ảnh sản phẩm mượt mà |
+| **Apache POI** | 5.2.3 (poi, poi-ooxml) | Hỗ trợ xuất dữ liệu (Lịch làm việc) ra file định dạng Excel (`.xlsx`) |
 
 ---
 
-## 🚀 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng (Khuyến Nghị)
+## 🚀 Hướng Dẫn Cài Đặt & Chạy Ứng Dụng
 
-### 1. Yêu Cầu Môi Trường
-* **Android Studio**: Phiên bản Jellyfish, Koala hoặc mới hơn.
-* **JDK**: Java Development Kit 11 trở lên.
-* **Android SDK**: Min SDK 26 (Android 8.0) | Target SDK 35 | Compile SDK 36.
-* **Thiết bị**: Máy ảo Android (AVD) hoặc máy thật bật chế độ *USB Debugging*.
+1. Mở thư mục dự án bằng **Android Studio**.
+2. Đợi Android Studio hoàn tất quá trình **Sync Gradle** tải các thư viện.
+3. Kết nối máy ảo Android (API 26+) hoặc máy thật qua cổng USB (bật *USB Debugging*).
+4. Nhấn nút **Run** (biểu tượng ▶️) để biên dịch và cài đặt ứng dụng lên máy.
 
-### 2. Mở Dự Án Trên Android Studio
-1. Khởi động Android Studio.
-2. Chọn **Open** và dẫn tới thư mục dự án `BaiCuoiKi` (hoặc `VuaDacSanAppMobile`).
-3. Chờ Android Studio tự động tải dependencies và thực hiện **Gradle Sync**.
-
-### 3. Khởi Chạy Ứng Dụng
-1. Chọn cấu hình chạy là `app`.
-2. Chọn thiết bị đích (máy ảo hoặc máy thật đã kết nối).
-3. Bấm nút **Run** (biểu tượng ▶️) hoặc phím tắt `Shift + F10` để biên dịch và cài đặt APK.
-
----
-
-## 💻 Chạy Bằng Lệnh Gradle (Command Line)
-
-Nếu bạn muốn build và kiểm thử trực tiếp thông qua terminal:
-
-### 1. Biên dịch gói ứng dụng (Build Debug APK)
-* **Trên Windows (PowerShell/CMD):**
-  ```powershell
-  .\gradlew.bat assembleDebug
-  ```
-* **Trên Linux/macOS:**
-  ```bash
-  ./gradlew assembleDebug
-  ```
-File APK hoàn thiện sẽ được xuất tại: `app/build/outputs/apk/debug/app-debug.apk`.
-
-### 2. Chạy Kiểm Thử Đơn Vị (Unit Test)
+Hoặc build file APK Debug trực tiếp từ dòng lệnh:
 ```powershell
-.\gradlew.bat test
+.\gradlew.bat assembleDebug
 ```
-
-### 3. Cài Đặt Trực Tiếp Vào Thiết Bị Đã Kết Nối
-```powershell
-.\gradlew.bat installDebug
-```
+File APK sinh ra tại thư mục: `app/build/outputs/apk/debug/app-debug.apk`.
 
 ---
 
-## 🗄 Cơ Sở Dữ Liệu & Tài Khoản Mặc Định
-
-Hệ thống sử dụng **SQLite Database** (`QuanLyHeThong.db`) được khởi tạo tự động khi ứng dụng chạy lần đầu.
-
-### 1. Tài Khoản Đăng Nhập Mặc Định
-
-| Tên Đăng Nhập | Mật Khẩu | Vai Trò | Mã Nhân Viên | Quyền Hạn |
-| :--- | :--- | :--- | :--- | :--- |
-| **`admin`** | **`123`** | `admin` | `NV01` | Toàn quyền quản trị hệ thống, quản lý nhân viên, kho, lương, khuyến mãi |
-
-> [!NOTE]
-> Ngoài tài khoản quản trị, bạn có thể đăng ký tài khoản khách hàng mới ngay trên giao diện ứng dụng hoặc tạo thêm nhân viên từ trang quản trị của Admin.
-
-### 2. Danh Sách 13 Bảng Dữ Liệu
-* **`TAI_KHOAN`**: Quản lý thông tin đăng nhập, mật khẩu, trạng thái khóa, mã OTP.
-* **`NHAN_VIEN`**: Quản lý thông tin cá nhân, CCCD, chức vụ, tài khoản liên kết.
-* **`SAN_PHAM`**: Danh mục đặc sản, giá bán, số lượng tồn kho, hạn sử dụng, nhà cung cấp.
-* **`NHA_CUNG_CAP`**: Danh sách đối tác phân phối đặc sản.
-* **`LICH_LAM_VIEC`**: Lịch trực ca, nhiệm vụ của nhân viên.
-* **`PHIEU_KHO` & `CHI_TIET_PHIEU_KHO`**: Giao dịch nhập/xuất kho hàng hóa.
-* **`BANG_LUONG`**: Bảng tính lương theo tháng cho từng nhân sự.
-* **`KHACH_HANG`**: Hồ sơ khách hàng và lịch sử mua sắm.
-* **`HOA_DON` & `CHI_TIET_HOA_DON`**: Đơn hàng, phương thức thanh toán, trạng thái giao vận.
-* **`KHUYEN_MAI`**: Mã voucher, tỉ lệ chiết khấu, thời hạn sử dụng.
-* **`YEU_CAU_HO_TRO`**: Phiếu tiếp nhận yêu cầu CSKH và phản hồi từ nhân viên.
-
----
-
-## 🛠 Công Nghệ & Thư Viện Sử Dụng
-
-| Tên Công Nghệ / Thư Viện | Phiên Bản | Mục Đích Sử Dụng |
-| :--- | :--- | :--- |
-| **Java** | 11 | Ngôn ngữ lập trình chính của ứng dụng |
-| **Android SDK** | Compile 36 / Target 35 / Min 26 | Nền tảng phát triển ứng dụng di động Android Native |
-| **SQLite (SQLiteOpenHelper)** | v3 | Cơ sở dữ liệu quan hệ cục bộ lưu trữ toàn bộ nghiệp vụ |
-| **Material Components** | 1.12.0+ | Giao diện chuẩn Material Design (Buttons, Dialogs, Cards...) |
-| **Glide** | 4.16.0 | Tối ưu hóa tải và hiển thị hình ảnh sản phẩm mượt mà |
-| **Apache POI** | 5.2.3 | Hỗ trợ đọc/ghi và xuất báo cáo dữ liệu sang định dạng Excel |
-| **Log4j & Woodstox** | Latest | Hỗ trợ xử lý định dạng XML và ghi nhật ký hệ thống |
-
----
-
-## 👨‍💻 Tác Giả & Đóng Góp
+## 👨‍💻 Thông Tin Dự Án
 - **Repository**: [https://github.com/mihtan05/VuaDacSanAppMobile](https://github.com/mihtan05/VuaDacSanAppMobile)
 - **Tác giả**: [mihtan05](https://github.com/mihtan05)
