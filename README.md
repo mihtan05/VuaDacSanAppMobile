@@ -9,42 +9,20 @@ Dự án **VuaDacSanAppMobile** là ứng dụng di động Android Native viế
 ```text
 VuaDacSanAppMobile/
 ├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/
-│   │       │   ├── com/example/baicuoiki/        # Nghiệp vụ mua sắm & tiện ích
-│   │       │   │   ├── activity/                 # CartActivity, CheckoutActivity, CustomerActivity, LichLamActivity, OrderActivity, OrderDetailActivity, ProductActivity, ProductDetailActivity, SupplierActivity
-│   │       │   │   ├── adapter/                  # CartAdapter, CustomerAdapter, LichLamViecAdapter, OrderAdapter, OrderDetailAdapter, ProductAdapter, SupplierAdapter
-│   │       │   │   ├── model/                    # CartItem, CartManager, Customer, LichLamViec, Order, OrderDetail, Product, Supplier
-│   │       │   │   ├── ExcelHelper.java          # Tiện ích xuất dữ liệu ra file Excel (.xlsx)
-│   │       │   │   ├── MainActivity.java         # Màn hình chính phân quyền hiển thị (Admin / Khách hàng)
-│   │       │   │   └── RegisterActivity.java     # Đăng ký tài khoản khách hàng mới
-│   │       │   ├── com/example/dangnhap/         # Xác thực & Quản lý nhân sự
-│   │       │   │   ├── activities/               # LoginActivity, AdminActivity, NhanVienActivity
-│   │       │   │   ├── adapters/                 # NhanVienAdapter
-│   │       │   │   ├── dao/                      # NhanVienDAO, TaiKhoanDAO
-│   │       │   │   └── models/                   # NhanVien, TaiKhoan
-│   │       │   ├── com/example/kho_ketoan/       # Quản lý kho, tính lương & thống kê
-│   │       │   │   ├── activities/               # KhoKeToanMainActivity, PhieuKhoActivity, AddEditPhieuKhoActivity, ChiTietPhieuKhoActivity, BangLuongActivity, ThongKeActivity
-│   │       │   │   ├── adapters/                 # PhieuKhoAdapter, ChiTietPhieuKhoAdapter, BangLuongAdapter
-│   │       │   │   └── models/                   # PhieuKho, ChiTietPhieuKho, BangLuong
-│   │       │   ├── com/example/qlkhuyenmai/      # Khuyến mãi & Chăm sóc khách hàng
-│   │       │   │   ├── cskh/                     # CSKHActivity, YeuCauAdapter, YeuCauDAO, YeuCauHoTro
-│   │       │   │   ├── KhuyenMaiMainActivity.java# Quản lý voucher, mã giảm giá
-│   │       │   │   └── KhuyenMaiDAO.java         # Thao tác CSDL khuyến mãi
-│   │       │   └── database/
-│   │       │       └── DatabaseHelper.java       # SQLite helper khởi tạo & quản trị 13 bảng CSDL
-│   │       ├── res/                              # Layouts XML, Drawables, Values (Colors, Strings, Themes), Menus
-│   │       └── AndroidManifest.xml               # Khai báo các Activity và quyền (Internet, Storage)
-│   └── build.gradle.kts                          # Cấu hình SDK, dependencies của app
-├── gradle/
-│   ├── libs.versions.toml                        # Khai báo phiên bản thư viện
-│   └── wrapper/                                  # Gradle Wrapper
-├── .gitignore                                    # File cấu hình bỏ qua Git (.idea, build, .gradle...)
-├── build.gradle.kts                              # Cấu hình root project
-├── gradle.properties                             # Cấu hình JVM & AndroidX
-├── gradlew / gradlew.bat                         # Gradle CLI Script cho macOS/Linux và Windows
-└── settings.gradle.kts                           # Khai báo settings & repositories
+│   ├── src/main/
+│   │   ├── java/
+│   │   │   ├── com/example/baicuoiki/    # Phân hệ mua sắm, giỏ hàng, đặt hàng & quản lý nghiệp vụ
+│   │   │   ├── com/example/dangnhap/     # Phân hệ xác thực, phân quyền & quản lý nhân sự
+│   │   │   ├── com/example/kho_ketoan/   # Phân hệ quản lý kho, bảng lương & thống kê
+│   │   │   ├── com/example/qlkhuyenmai/  # Phân hệ khuyến mãi & chăm sóc khách hàng (CSKH)
+│   │   │   └── database/                 # SQLite helper quản lý cơ sở dữ liệu
+│   │   ├── res/                          # Tài nguyên giao diện (Layouts, Drawables, Values, Menus)
+│   │   └── AndroidManifest.xml           # Khai báo cấu hình ứng dụng, Activity và quyền
+│   └── build.gradle.kts                  # Cấu hình SDK & dependencies của module app
+├── gradle/                               # Gradle wrapper & catalog thư viện
+├── build.gradle.kts                      # Cấu hình cấp root project
+├── settings.gradle.kts                   # Khai báo module và repositories
+└── README.md                             # Tài liệu hướng dẫn dự án
 ```
 
 ---
