@@ -77,6 +77,3 @@ Cơ sở dữ liệu tự động tạo sẵn tài khoản quản trị khi ứn
 
 ---
 
-## 👨‍💻 Thông Tin Dự Án
-- **Repository**: [https://github.com/mihtan05/VuaDacSanAppMobile](https://github.com/mihtan05/VuaDacSanAppMobile)
-- **Tác giả**: [mihtan05](https://github.com/mihtan05)
