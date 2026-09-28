@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Icon Sổ sách -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M19,3L5,3c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM19,19L5,19L5,5h14v14z" />
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M7,7h10v2L7,9zM7,11h10v2L7,13z" />
+    <!-- Biểu tượng máy tính nhỏ ở góc -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M15,15h4v4h-4z" />
+</vector>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:text="Mã Phiếu"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+        <EditText android:id="@+id/etMaPhieu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="VD: PK001" android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Loại Phiếu"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+        <Spinner android:id="@+id/spinnerLoaiPhieu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- FIX: Đổi định dạng ngày sang dd/MM/yy -->
+        <TextView android:text="Ngày Lập"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+        <EditText android:id="@+id/etNgayLap"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="14/04/2026"
+            android:inputType="text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Mã NV Kho"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+        <EditText android:id="@+id/etMaNVKho"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="VD: NV001" android:layout_marginBottom="12dp"/>
+
+        <TextView android:text="Nhà Cung Cấp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+        <Spinner android:id="@+id/spinnerMaNCC"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:id="@+id/tvTrangThaiLabel"
+            android:text="Trạng Thái Thanh Toán"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+        <Spinner android:id="@+id/spinnerTrangThai"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone"/>
+
+        <Button android:id="@+id/btnLuu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="LƯU" android:backgroundTint="#2E75B6"/>
+    </LinearLayout>
+</ScrollView>

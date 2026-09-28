@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_white"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="THÊM KHÁCH HÀNG"
+        android:textColor="#EE4D2D"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Mã khách hàng -->
+            <EditText
+                android:id="@+id/edtAddMaKH"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Mã khách hàng (*)"
+                android:textSize="15sp"
+                android:inputType="textCapCharacters" />
+
+            <!-- Họ tên -->
+            <EditText
+                android:id="@+id/edtAddHoTen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Họ và tên (*)"
+                android:textSize="15sp"
+                android:inputType="textPersonName|textCapWords" />
+
+            <!-- Số điện thoại -->
+            <EditText
+                android:id="@+id/edtAddSdt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Số điện thoại (*)"
+                android:inputType="phone"
+                android:textSize="15sp" />
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/edtAddEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Email (*)"
+                android:inputType="textEmailAddress"
+                android:textSize="15sp" />
+
+            <!-- Địa chỉ -->
+            <EditText
+                android:id="@+id/edtAddDiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Địa chỉ"
+                android:textSize="15sp" />
+
+            <!-- Tên đăng nhập (FK -> TAI_KHOAN, tùy chọn) -->
+            <EditText
+                android:id="@+id/edtAddDangnhap"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="Tên đăng nhập (tuỳ chọn)"
+                android:textSize="15sp"
+                android:inputType="textNoSuggestions"
+                android:fontFamily="monospace" />
+
+            <!-- Ghi chú: trạng thái mặc định -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="* Trạng thái mặc định: Hoạt động"
+                android:textColor="#888"
+                android:textSize="12sp" />
+
+            <!-- Nút Hủy / Lưu -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAddHuy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#BDBDBD"
+                    android:text="HỦY"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnAddLuu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#EE4D2D"
+                    android:text="LƯU"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

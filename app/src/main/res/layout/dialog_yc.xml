@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/edMa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mã"/>
+
+    <Spinner
+        android:id="@+id/spLoai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edKH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Khách hàng"/>
+
+    <EditText
+        android:id="@+id/edNoiDung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nội dung"/>
+    <EditText
+        android:id="@+id/edPhanHoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phản hồi"/>
+</LinearLayout>

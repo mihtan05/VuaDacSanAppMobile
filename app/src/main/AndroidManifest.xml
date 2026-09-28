@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo_app"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_app"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BAICUOIKI">
+
+        <!-- Màn hình Đăng Nhập -->
+        <activity
+            android:name="com.example.dangnhap.activities.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Các màn hình thuộc folder activity -->
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.OrderDetailActivity" />
+        <activity android:name=".activity.CheckoutActivity" android:exported="false" />
+        <activity android:name=".activity.SupplierActivity" android:exported="false" />
+        <activity android:name=".activity.CustomerActivity" android:exported="false" />
+        <activity android:name=".activity.CartActivity" android:exported="true" />
+        <activity android:name=".activity.ProductActivity" android:exported="false" />
+        <activity android:name=".activity.LichLamActivity" android:exported="false" />
+        <activity android:name=".activity.ProductDetailActivity" android:exported="false" />
+
+        <!-- Màn hình chính -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Các module khác -->
+        <activity android:name="com.example.qlkhuyenmai.cskh.CSKHActivity" />
+        <activity android:name="com.example.qlkhuyenmai.KhuyenMaiMainActivity" />
+        <activity android:name="com.example.dangnhap.activities.AdminActivity" />
+        <activity android:name="com.example.dangnhap.activities.NhanVienActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.KhoKeToanMainActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.PhieuKhoActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.AddEditPhieuKhoActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.ChiTietPhieuKhoActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.BangLuongActivity" />
+        <activity android:name="com.example.kho_ketoan.activities.ThongKeActivity" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+    </application>
+</manifest>

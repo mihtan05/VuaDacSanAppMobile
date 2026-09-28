@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_border">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ĐĂNG KÝ LỊCH HÀNG LOẠT"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:textColor="#EE4D2D"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên:"
+            android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/spNhanVien"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thứ 2 đầu tuần:"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/btnChonTuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn ngày Thứ 2 đầu tuần"
+            android:backgroundTint="#F5F5F5"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/edtNhiemVuChung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhiệm vụ chung cho cả tuần"
+            android:layout_marginBottom="16dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginBottom="8dp">
+
+            <TableLayout
+                android:id="@+id/tlLichBatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow android:background="#E0E0E0" android:padding="4dp">
+                    <TextView android:text="Ca" android:textStyle="bold" android:gravity="center" android:minWidth="60dp"/>
+                    <TextView android:text="T2" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="T3" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="T4" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="T5" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="T6" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="T7" android:gravity="center" android:minWidth="45dp"/>
+                    <TextView android:text="CN" android:gravity="center" android:minWidth="45dp"/>
+                </TableRow>
+
+                <TableRow android:padding="4dp">
+                    <TextView android:text="Sáng" android:textStyle="bold" />
+                    <CheckBox android:id="@+id/cbS_T2" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_T3" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_T4" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_T5" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_T6" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_T7" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbS_CN" android:gravity="center" />
+                </TableRow>
+
+                <TableRow android:padding="4dp">
+                    <TextView android:text="Chiều" android:textStyle="bold" />
+                    <CheckBox android:id="@+id/cbC_T2" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_T3" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_T4" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_T5" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_T6" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_T7" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbC_CN" android:gravity="center" />
+                </TableRow>
+
+                <TableRow android:padding="4dp">
+                    <TextView android:text="Tối" android:textStyle="bold" />
+                    <CheckBox android:id="@+id/cbT_T2" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_T3" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_T4" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_T5" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_T6" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_T7" android:gravity="center" />
+                    <CheckBox android:id="@+id/cbT_CN" android:gravity="center" />
+                </TableRow>
+            </TableLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btnHuyHangLoat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="HỦY"
+                android:backgroundTint="#9E9E9E"
+                android:layout_marginEnd="4dp"/>
+            <Button
+                android:id="@+id/btnLuuHangLoat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="LƯU HÀNG LOẠT"
+                android:backgroundTint="#4CAF50"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

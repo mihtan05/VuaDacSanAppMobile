@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="THỐNG KÊ"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1F4E79"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- ===== KHỐI 1: THỐNG KÊ PHIẾU KHO ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#DEEAF1"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📦  THỐNG KÊ PHIẾU KHO (ĐÃ THANH TOÁN)"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#2E75B6"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn tháng:"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
+            <Spinner android:id="@+id/spinnerThangPK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView android:id="@+id/tvTongTienPhieuKho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền: --"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#2E75B6"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView android:id="@+id/tvTongTienNhap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="↓ Tiền nhập kho: --"
+                android:textSize="14sp"
+                android:textColor="#145A32"
+                android:background="#D5F5E3"
+                android:padding="10dp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView android:id="@+id/tvTongTienXuat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="↑ Tiền xuất kho: --"
+                android:textSize="14sp"
+                android:textColor="#7B241C"
+                android:background="#FADBD8"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+        <!-- ===== KHỐI 2: THỐNG KÊ LƯƠNG ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#E2EFDA"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💰  THỐNG KÊ LƯƠNG"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#375623"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn tháng:"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
+            <Spinner android:id="@+id/spinnerThangLuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView android:id="@+id/tvTongTienLuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền lương: --"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#375623"
+                android:background="#FFFFFF"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

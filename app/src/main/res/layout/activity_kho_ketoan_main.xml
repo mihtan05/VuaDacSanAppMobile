@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#F0F4F8">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QUẢN LÝ KHO và KẾ TOÁN"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#1F4E79"
+        android:layout_marginBottom="32dp"/>
+
+    <Button android:id="@+id/btnPhieuKho"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Phiếu Kho" android:layout_marginBottom="12dp"
+        android:backgroundTint="#2E75B6"/>
+
+    <Button android:id="@+id/btnBangLuong"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Bảng Lương" android:layout_marginBottom="12dp"
+        android:backgroundTint="#375623"/>
+
+    <Button android:id="@+id/btnThongKe"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Thống Kê"
+        android:backgroundTint="#7030A0"/>
+</LinearLayout>
